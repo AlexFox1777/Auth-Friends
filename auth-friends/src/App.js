@@ -5,6 +5,7 @@ import './styles.css';
 import Login from "./components/login/Login";
 import Friends from "./components/friends/Friends";
 import PrivateRoute from "./components/PrivateRoute";
+import PersonProfile from './components/Person/PersonProfile'
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
             </li>
           </ul>
           <Route path="/login" component={Login} />
-          <PrivateRoute exact path="/friends" component={Friends} />
+          <PrivateRoute exact path="/friends" component={Friends}/>
+          <PrivateRoute path="/friends/:friendId" component={PersonProfile} />
         </div>
       </Router>
   );

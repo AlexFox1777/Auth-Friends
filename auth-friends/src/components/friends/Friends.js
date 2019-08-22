@@ -1,50 +1,40 @@
 import React from 'react';
-import {axiosWithAuth} from "../../utils/axiosWithAuth";
+import {connect} from "react-redux";
+import {getFriends} from "../../actions/personActions";
+import Friend from "./Friend";
+import Grid from "@material-ui/core/Grid";
 
 
 class Friends extends React.Component {
-    state = {
-        friends: [],
-    };
+    state = {};
 
     componentDidMount() {
         this.getData();
     }
 
     getData = () => {
-        axiosWithAuth()
-            .get('http://localhost:5000/api/friends')
-            .then(res => {
-                console.log('data from server', res.data);
-                this.setState({...this.state.friends, friends: res.data});
-            })
-            .catch(err => console.log(err.response));
+        this.props.getFriends();
     };
 
     render() {
         return (
             <>
                 <p>Friends</p>
-                {console.log('state', this.state.friends)}
-                {this.state.friends.map(friend => (
-                        <div>
-
-                            <p>{friend.name}</p>
-                            <p>{friend.age}</p>
-                            <p>{friend.email}</p>
-                        </div>
-                    )
-                )}
+                <Grid container justify={'center'} spacing={3}>
+                    {this.props.friends.map(friend => (
+                        <Grid item xs={12} sm={4} md={3}>  <Friend friend={friend} /></Grid>
+                        )
+                    )}
+                </Grid>
             </>
         )
     }
 }
 
-// {
-//     id: 1,
-//         name: 'Ben',
-//     age: 30,
-//     email: 'ben@lambdaschool.com'
-// },
+const mapPropsToState = state => {
+    return {
+        friends: state.friends
+    }
+};
 
-export default Friends;
+export default connect(mapPropsToState, {getFriends})(Friends);
