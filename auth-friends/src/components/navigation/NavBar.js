@@ -1,15 +1,15 @@
 import React from 'react';
 import {Link as RouterLink} from 'react-router-dom';
 import {connect} from "react-redux";
-import {logout} from "../actions";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Button from "@material-ui/core/Button";
+import {logout} from "../../store/auth/authActions";
+import AppBar from "@material-ui/core/AppBar/index";
+import Toolbar from "@material-ui/core/Toolbar/index";
+import Button from "@material-ui/core/Button/index";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import Typography from "@material-ui/core/Typography";
+import Typography from "@material-ui/core/Typography/index";
 import withStyles from "@material-ui/core/styles/withStyles";
-import {pink} from "@material-ui/core/colors";
-import {ThemeProvider} from "styled-components";
+import {pink} from "@material-ui/core/colors/index";
+
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -35,7 +35,6 @@ const NavBar = props => {
         <div className={classes.root}>
             <AppBar>
                 <Toolbar>
-
                         <Typography variant="h6" className={classes.title}>
                             My Friends
                         </Typography>
@@ -51,7 +50,6 @@ const NavBar = props => {
 };
 const mapPropsToState = state => {
     return {
-        username: state.user.username,
         isAuth: state.isAuth,
     }
 };

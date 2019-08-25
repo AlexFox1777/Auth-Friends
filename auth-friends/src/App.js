@@ -6,12 +6,10 @@ import Login from "./components/login/Login";
 import Friends from "./components/friends/Friends";
 import PrivateRoute from "./components/PrivateRoute";
 import PersonProfile from './components/Person/PersonProfile'
-import NavBar from "./navigation/NavBar";
+import NavBar from "./components/navigation/NavBar";
 import Container from "@material-ui/core/Container";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import {Palette as getContrastText} from "@material-ui/core/styles/createPalette";
-import responsiveFontSizes from "@material-ui/core/styles/responsiveFontSizes";
 import {pink} from "@material-ui/core/colors";
 
 const useStyles = makeStyles(theme => ({

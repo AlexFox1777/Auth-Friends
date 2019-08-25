@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {authPerson} from "../../actions";
+import {authPerson} from "../../store/auth/authActions";
 import withStyles from "@material-ui/core/styles/withStyles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";

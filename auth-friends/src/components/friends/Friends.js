@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {getFriends} from "../../actions/personActions";
+import {getFriends} from "../../store/friends/friendsActions";
 import Friend from "./Friend";
 import Grid from "@material-ui/core/Grid";
 
@@ -11,20 +11,22 @@ class Friends extends React.Component {
     componentDidMount() {
         this.getData();
     }
-
     getData = () => {
         this.props.getFriends();
     };
 
+
     render() {
         return (
             <>
-                <Grid container justify={'center'} spacing={3}>
-                    {this.props.friends.map(friend => (
-                        <Grid item xs={12} sm={4} md={3}>  <Friend friend={friend} /></Grid>
-                        )
-                    )}
-                </Grid>
+                {this.props.friends.length > 1 && (
+                    <Grid container justify={'center'} spacing={3}>
+                        {this.props.friends.map(friend => (
+                                <Grid item xs={12} sm={4} md={3}>  <Friend friend={friend} /></Grid>
+                            )
+                        )}
+                    </Grid>
+                )}
             </>
         )
     }
@@ -32,7 +34,7 @@ class Friends extends React.Component {
 
 const mapPropsToState = state => {
     return {
-        friends: state.friends
+        friends: state.friends.friends
     }
 };
 

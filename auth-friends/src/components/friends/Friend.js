@@ -7,7 +7,7 @@ import Create from '@material-ui/icons/Create';
 import CardContent from "@material-ui/core/CardContent";
 import styled from 'styled-components';
 import {connect} from "react-redux";
-import {deleteFriend} from "../../actions/personActions";
+import {deleteFriend} from "../../store/friends/friendsActions";
 
 const Actions = styled.div`
     padding: 0 3px 0 3px
