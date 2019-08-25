@@ -1,9 +1,0 @@
-export {
-    AUTH_PERSON_START,
-    AUTH_PERSON_SUCCESS,
-    AUTH_PERSON_FAILURE,
-    authPerson,
-    GET_FRIENDS_START,
-    GET_FRIENDS_SUCCESS,
-    GET_FRIENDS_FAILURE
-} from './personActions'

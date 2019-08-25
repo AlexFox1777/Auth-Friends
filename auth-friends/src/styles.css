@@ -9,7 +9,12 @@ body {
 .App {
     font-family: 'Roboto', sans-serif;
     text-align: center;
-    padding-bottom: 36px;
+    padding-bottom: 16px;
+    height: 30px;
+}
+p{
+    margin: 0;
+    padding: 0;
 }
 
 ul {
@@ -24,6 +29,7 @@ li {
     list-style: none;
     margin-right: 6px;
     color: #204963;
+    padding: 0;
 }
 
 a {
