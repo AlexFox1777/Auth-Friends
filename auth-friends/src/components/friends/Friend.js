@@ -6,6 +6,8 @@ import Person from '@material-ui/icons/Person';
 import Create from '@material-ui/icons/Create';
 import CardContent from "@material-ui/core/CardContent";
 import styled from 'styled-components';
+import {connect} from "react-redux";
+import {deleteFriend} from "../../actions/personActions";
 
 const Actions = styled.div`
     padding: 0 3px 0 3px
@@ -18,25 +20,19 @@ const Actions = styled.div`
 class Friend extends React.Component {
     state = {};
 
-    goToFriend() {
-        console.log('props in friends', this.props);
-        this.props.history.push(`/friends/${this.props.friend.id}`);
-    }
 
     render() {
 
         return (
             <Card>
                 <Actions>
-                    <a href='#' onClick={() => this.goToFriend() }>
-                        <IconButton>
-                            <Person/>
-                        </IconButton>
-                    </a>
+                    <IconButton >
+                        <Person/>
+                    </IconButton>
                     <IconButton>
                         <Create/>
                     </IconButton>
-                    <IconButton>
+                    <IconButton onClick={() => this.props.deleteFriend(this.props.friend.id)}>
                         <Clear/>
                     </IconButton>
                 </Actions>
@@ -50,4 +46,4 @@ class Friend extends React.Component {
     }
 }
 
-export default Friend;
+export default connect(null, {deleteFriend})(Friend);
