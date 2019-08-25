@@ -9,7 +9,10 @@ import {
     CHANGE_FRIEND_FAILURE,
     DELETE_FRIEND_START,
     DELETE_FRIEND_SUCCESS,
-    DELETE_FRIEND_FAILURE
+    DELETE_FRIEND_FAILURE,
+    CREATE_NEW_FRIEND_START,
+    CREATE_NEW_FRIEND_SUCCESS,
+    CREATE_NEW_FRIEND_FAILURE
 } from "./types";
 
 
@@ -30,7 +33,7 @@ export const getFriends = () => {
 
 //Change Friend
 
-export const goToFriend = (id, friend) => {
+export const changeFriend = (id, friend) => {
     return dispatch => {
         dispatch({type: CHANGE_FRIEND_START});
         axiosWithAuth()
@@ -54,5 +57,20 @@ export const deleteFriend = (id) => {
                 dispatch({type: DELETE_FRIEND_SUCCESS, payload: res.data});
             })
             .catch(err => dispatch({type: DELETE_FRIEND_FAILURE, payload: err.response}));
+    }
+};
+
+//Create new friend
+
+export const createNewFriend = (friend) => {
+    return dispatch => {
+            dispatch({type: CREATE_NEW_FRIEND_START});
+        axiosWithAuth()
+            .post(`http://localhost:5000/api/friends`, friend)
+            .then(res => {
+                console.log(res.data);
+                dispatch({type: CREATE_NEW_FRIEND_SUCCESS, payload: res.data});
+            })
+            .catch(err => dispatch({type: CREATE_NEW_FRIEND_FAILURE, payload: err.response}));
     }
 };

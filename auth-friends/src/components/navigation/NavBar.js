@@ -50,7 +50,7 @@ const NavBar = props => {
 };
 const mapPropsToState = state => {
     return {
-        isAuth: state.isAuth,
+        isAuth: state.auth.isAuth,
     }
 };
 export default connect(mapPropsToState, {logout})(NavBar);
